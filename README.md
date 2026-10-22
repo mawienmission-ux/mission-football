@@ -14,6 +14,10 @@ The publishable key is intended for client apps; Row Level Security in the schem
 For EAS cloud builds, also add `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` as EAS environment variables; local `.env` files are intentionally excluded from version control.
 The privacy policy is available at <https://m-missionfootball.onrender.com/privacy-policy.html> and is linked from the app's bottom navigation.
 
+## Deploy the web app to Vercel
+
+The Expo project can be exported as a static web app. Connect this GitHub repository to Vercel with the project root as the root directory; `vercel.json` configures the web export and `dist` output. Commits to the connected branch trigger a new deployment.
+
 ## Create the first administrator
 
 1. In Supabase **Authentication → Users**, create an admin account with an email and password.
