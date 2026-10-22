@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "World Football",
+    "slug": "world-football",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#08110E"
+    },
+    "android": {
+      "package": "com.mmissionfootball.worldfootball",
+      "adaptiveIcon": {
+        "backgroundColor": "#08110E"
+      }
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f84660d2-8396-4b3e-af3c-d25bc3ab1beb"
+      }
+    },
+    "owner": "mawienmission"
+  }
+}

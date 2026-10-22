@@ -1,0 +1,11 @@
+node_modules/
+.expo/
+.env
+.env.*
+!.env.example
+.expo-connected-check/
+.expo-build-check/
+.expo-release-check/
+.expo-release-check-final/
+dist/
+web-build/
