@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import {
+  Alert,
+  Linking,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -58,6 +60,7 @@ const demoMatches: Match[] = [
 ];
 
 const filters = ["For you", "Europe", "Americas", "Asia", "Africa", "Oceania"];
+const privacyPolicyUrl = "https://m-missionfootball.onrender.com/privacy-policy.html";
 
 function SectionHeading({
   title,
@@ -138,6 +141,14 @@ export default function App() {
       day: "numeric",
     })
     .toUpperCase();
+
+  async function openPrivacyPolicy() {
+    try {
+      await Linking.openURL(privacyPolicyUrl);
+    } catch (error) {
+      Alert.alert("Unable to open privacy policy", errorMessage(error));
+    }
+  }
 
   useEffect(() => {
     const client = supabase;
@@ -388,24 +399,33 @@ export default function App() {
       )}
 
       <View style={styles.tabBar}>
-        {[
-          { label: "Home", icon: "⌂" },
-          { label: "Table", icon: "▤" },
-          { label: "Admin", icon: "⚙" },
-        ].map((tab) => (
-          <Pressable
-            key={tab.label}
-            onPress={() => setActiveTab(tab.label)}
-            style={styles.tab}
-          >
-            <Text style={[styles.tabIcon, activeTab === tab.label && styles.tabActive]}>
-              {tab.icon}
-            </Text>
-            <Text style={[styles.tabLabel, activeTab === tab.label && styles.tabActive]}>
-              {tab.label}
-            </Text>
-          </Pressable>
-        ))}
+        <View style={styles.tabRow}>
+          {[
+            { label: "Home", icon: "⌂" },
+            { label: "Table", icon: "▤" },
+            { label: "Admin", icon: "⚙" },
+          ].map((tab) => (
+            <Pressable
+              key={tab.label}
+              onPress={() => setActiveTab(tab.label)}
+              style={styles.tab}
+            >
+              <Text style={[styles.tabIcon, activeTab === tab.label && styles.tabActive]}>
+                {tab.icon}
+              </Text>
+              <Text style={[styles.tabLabel, activeTab === tab.label && styles.tabActive]}>
+                {tab.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => void openPrivacyPolicy()}
+          style={styles.privacyLink}
+        >
+          <Text style={styles.privacyLinkText}>Privacy policy</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -872,14 +892,20 @@ const styles = StyleSheet.create({
     marginTop: 9,
   },
   tabBar: {
-    height: 68,
+    height: 88,
     borderTopWidth: 1,
     borderTopColor: "#223028",
     backgroundColor: "#0D1712",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 2,
+    paddingBottom: 4,
+  },
+  tabRow: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    paddingBottom: 4,
+    width: "100%",
   },
   tab: {
     alignItems: "center",
@@ -899,5 +925,13 @@ const styles = StyleSheet.create({
   },
   tabActive: {
     color: "#C7F36B",
+  },
+  privacyLink: {
+    padding: 3,
+  },
+  privacyLinkText: {
+    color: "#9AA89D",
+    fontSize: 10,
+    textDecorationLine: "underline",
   },
 });

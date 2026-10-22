@@ -12,6 +12,7 @@ An Expo mobile app for football fixtures and historical league standings. Admin-
 
 The publishable key is intended for client apps; Row Level Security in the schema protects writes. Never put a Supabase `service_role` key in the app or `.env`.
 For EAS cloud builds, also add `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` as EAS environment variables; local `.env` files are intentionally excluded from version control.
+The privacy policy is available at <https://m-missionfootball.onrender.com/privacy-policy.html> and is linked from the app's bottom navigation.
 
 ## Create the first administrator
 
